@@ -13,11 +13,24 @@ firstDev = mongoCpq['sample']
 # Quote Document Collection
 quoteDocument = firstDev['quoteDocument']
 
-# Query with id
-myQuery = list(quoteDocument.find({'_id': 12345}))
+# Quote with id
+myQuote = list(quoteDocument.find({'cust_id': 1234}))
 
-print(myQuery)
+print(f'\nQuote: {myQuote}')
 
+quoteStatus = myQuote[0]['parameter1']
+print(f"\nQuote Status: {quoteStatus}")
+
+if quoteStatus == 'FIRST':
+    print('Validation Successful!')
+else:
+    print('Validation Failed!')
+
+# Alternative: Mongo Db Query
+# Find quote status with mongo query
+myOrderStatus = quoteDocument.find({'cust._id': 1244}, {"parameter1": 1, "_id": 0})
+queryQuoteStatus = myOrderStatus[0].get('parameter1')
+print(f"\nQuote status with query: {queryQuoteStatus}")
 
 
 
