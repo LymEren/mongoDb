@@ -1,0 +1,23 @@
+import pymongo
+
+# DB connection definitions
+mongoOne = pymongo.MongoClient("your first connection")
+mongoTwo = pymongo.MongoClient("your second connection")
+
+# Database and colletion name search
+# print(mongoOne.list_database_names())
+# print(mongoOne['sample'].list_collection_names())
+
+# First Database
+firstDev = mongoCpq['sample']
+# Quote Document Collection
+quoteDocument = firstDev['quoteDocument']
+
+# Query with id
+myQuery = list(quoteDocument.find({'_id': 12345}))
+
+print(myQuery)
+
+
+
+
